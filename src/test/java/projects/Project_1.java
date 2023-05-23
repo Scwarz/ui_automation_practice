@@ -24,14 +24,14 @@ public class Project_1 extends Base {
 
     @Test
     public void validateContactUsInformation(){
-        Assert.assertTrue(LocatorsForProject01.findContactUsHeading.isDisplayed()); //Checking if the locator is displayed (the locator has been created with a searching method as a separated class)
-        Assert.assertEquals(LocatorsForProject01.findContactUsHeading.getText(), "Contact Us"); //Checking if the found locator is equal to what has to be by requirements
-        Assert.assertTrue(LocatorsForProject01.findAddressParagraph.isDisplayed());
-        Assert.assertEquals(LocatorsForProject01.findAddressParagraph.getText(), "2860 S River Rd Suite 350, Des Plaines IL 60018");
-        Assert.assertTrue(LocatorsForProject01.findEmailParagraph.isDisplayed());
-        Assert.assertEquals(LocatorsForProject01.findEmailParagraph.getText(), "info@techglobalschool.com");
-        Assert.assertTrue(LocatorsForProject01.findPhoneNumber.isDisplayed());
-        Assert.assertEquals(LocatorsForProject01.findPhoneNumber.getText(), "(773) 257-3010");
+        Assert.assertTrue(LocatorsForProject01.ContactUsHeading.isDisplayed()); //Checking if the locator is displayed (the locator has been created with a searching method as a separated class)
+        Assert.assertEquals(LocatorsForProject01.ContactUsHeading.getText(), "Contact Us"); //Checking if the found locator is equal to what has to be by requirements
+        Assert.assertTrue(LocatorsForProject01.AddressParagraph.isDisplayed());
+        Assert.assertEquals(LocatorsForProject01.AddressParagraph.getText(), "2860 S River Rd Suite 350, Des Plaines IL 60018");
+        Assert.assertTrue(LocatorsForProject01.EmailParagraph.isDisplayed());
+        Assert.assertEquals(LocatorsForProject01.EmailParagraph.getText(), "info@techglobalschool.com");
+        Assert.assertTrue(LocatorsForProject01.PhoneNumber.isDisplayed());
+        Assert.assertEquals(LocatorsForProject01.PhoneNumber.getText(), "(773) 257-3010");
     }
 
 
