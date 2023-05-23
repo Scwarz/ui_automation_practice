@@ -1,6 +1,19 @@
 package projects;
 
-public class Project_1 {
+import locators_from_techglobal_training.LocatorsForProject01;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import utils.Base;
+
+public class Project_1 extends Base {
+
+    @BeforeMethod
+    public void setPage(){
+        driver.get("https://techglobal-training.com/frontend/project-1");
+    }
+
+
     /* Test Case 01 - Validate the Contact Us information
         Navigate to https://techglobal-training.com/frontend/project-1
         Validate the heading is “Contact Us”
@@ -8,6 +21,19 @@ public class Project_1 {
         Validate the email is “info@techglobalschool.com"
         Validate the phone number is “(773) 257-3010”
      */
+
+    @Test
+    public void validateContactUsInformation(){
+        Assert.assertTrue(LocatorsForProject01.findContactUsHeading.isDisplayed()); //Checking if the locator is displayed (the locator has been created with a searching method as a separated class)
+        Assert.assertEquals(LocatorsForProject01.findContactUsHeading.getText(), "Contact Us"); //Checking if the found locator is equal to what has to be by requirements
+        Assert.assertTrue(LocatorsForProject01.findAddressParagraph.isDisplayed());
+        Assert.assertEquals(LocatorsForProject01.findAddressParagraph.getText(), "2860 S River Rd Suite 350, Des Plaines IL 60018");
+        Assert.assertTrue(LocatorsForProject01.findEmailParagraph.isDisplayed());
+        Assert.assertEquals(LocatorsForProject01.findEmailParagraph.getText(), "info@techglobalschool.com");
+        Assert.assertTrue(LocatorsForProject01.findPhoneNumber.isDisplayed());
+        Assert.assertEquals(LocatorsForProject01.findPhoneNumber.getText(), "(773) 257-3010");
+    }
+
 
     /* Test Case 02 - Validate the Full name input box
         Navigate to https://techglobal-training.com/frontend/project-1
