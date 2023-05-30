@@ -1,10 +1,15 @@
 package projects;
 
 import locators_from_techglobal_training.LocatorsForProject01;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.Base;
+
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Project_1 extends Base {
 
@@ -24,14 +29,14 @@ public class Project_1 extends Base {
 
     @Test
     public void validateContactUsInformation(){
-        Assert.assertTrue(LocatorsForProject01.contactUsHeading.isDisplayed()); //Checking if the locator is displayed (the locator has been created with a searching method as a separated class)
-        Assert.assertEquals(LocatorsForProject01.contactUsHeading.getText(), "Contact Us"); //Checking if the found locator is equal to what has to be by requirements
-        Assert.assertTrue(LocatorsForProject01.addressParagraph.isDisplayed());
-        Assert.assertEquals(LocatorsForProject01.addressParagraph.getText(), "2860 S River Rd Suite 350, Des Plaines IL 60018");
-        Assert.assertTrue(LocatorsForProject01.emailParagraph.isDisplayed());
-        Assert.assertEquals(LocatorsForProject01.emailParagraph.getText(), "info@techglobalschool.com");
-        Assert.assertTrue(LocatorsForProject01.phoneNumber.isDisplayed());
-        Assert.assertEquals(LocatorsForProject01.phoneNumber.getText(), "(773) 257-3010");
+        Assert.assertTrue(driver.findElement(By.xpath("//h1[@class='is-size-2']")).isDisplayed()); //Checking if the locator is displayed (the locator has been created with a searching method as a separated class)
+        Assert.assertEquals(driver.findElement(By.xpath("//h1[@class='is-size-2']")).getText(), "Contact Us"); //Checking if the found locator is equal to what has to be by requirements
+        Assert.assertTrue(driver.findElement(By.id("address")).isDisplayed());
+        Assert.assertEquals(driver.findElement(By.id("address")).getText(), "2860 S River Rd Suite 350, Des Plaines IL 60018");
+        Assert.assertTrue(driver.findElement(By.id("email")).isDisplayed());
+        Assert.assertEquals(driver.findElement(By.id("email")).getText(), "info@techglobalschool.com");
+        Assert.assertTrue(driver.findElement(By.id("phone-number")).isDisplayed());
+        Assert.assertEquals(driver.findElement(By.id("phone-number")).getText(), "(773) 257-3010");
     }
 
 
@@ -43,6 +48,16 @@ public class Project_1 extends Base {
         Validate that the placeholder of the Full name input box is “Enter your name”
      */
 
+    @Test
+    public void validateFullNameInputBox(){
+        WebElement fullNameInputText = driver.findElement(By.xpath("//form/div[@class='field'][1]/div[@class='control']/input"));
+        WebElement fullName = driver.findElement(By.cssSelector("label[for='name']"));
+        Assert.assertTrue(fullName.isDisplayed());
+        Assert.assertEquals(fullName.getText(),"Full name *");
+        Assert.assertTrue(true,fullNameInputText.getAttribute("required"));
+        Assert.assertEquals(fullNameInputText.getAttribute("placeholder"), "Enter your full name");
+    }
+
     /* Test Case 03 - Validate the Gender radio button
         Navigate to https://techglobal-training.com/frontend/project-1
         Validate the label is “Gender”
@@ -52,6 +67,46 @@ public class Project_1 extends Base {
         Click on the “Male” option and validate it is selected while the others are not selected
         Click on the “Female” option and validate it is selected while the others are not selected
      */
+
+    @Test
+    public void validateGenderRadioButton(){
+        WebElement genderLabel = driver.findElement(By.cssSelector("div.field:nth-child(2) label.label"));
+        Assert.assertEquals(genderLabel.getText(), "Gender *");
+        Assert.assertTrue(true,genderLabel.getAttribute("required"));
+        List<WebElement> genderTypes = driver.findElements(By.cssSelector("div[class='field'] label.radio"));
+        List<WebElement> genderInput = driver.findElements(By.cssSelector(".mr-1"));
+        String[] requiredText = {"Male","Female", "Prefer not to disclose"};
+
+        for (int i = 0; i < genderTypes.size(); i++) {
+            Assert.assertEquals(genderTypes.get(i).getText(),requiredText[i]);
+            Assert.assertTrue(genderInput.get(i).isDisplayed());
+            Assert.assertTrue(genderInput.get(i).isEnabled());
+            Assert.assertFalse(genderInput.get(i).isSelected());
+        }
+
+        for (int i = 0; i < genderInput.size(); i++) {
+            if(i == 0) continue;
+            Assert.assertFalse(genderInput.get(i).isSelected());
+        }
+
+        for (int i = 0; i < genderInput.size(); i++) {
+            if(i == 1) continue;
+            Assert.assertFalse(genderInput.get(i).isSelected());
+        }
+
+        /*
+        IntStream.range(0, genderInput.size())
+                .forEach(index -> {
+                    Assert.assertTrue(genderInput.get(index).isDisplayed());
+                    Assert.assertFalse(genderInput.get(index).isSelected());
+                    Assert.assertTrue(genderInput.get(index).isEnabled());
+                    Assert.assertEquals(requiredText[index], genderInput.get(index).getText()); // Compare the expected and actual texts based on the index
+                });
+
+         */
+
+
+    }
 
     /* Test Case 04 - Validate the Address input box
         Navigate to https://techglobal-training.com/frontend/project-1
