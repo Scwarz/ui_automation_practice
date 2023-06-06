@@ -13,7 +13,8 @@ public class Project_2 extends Base {
         driver.get("https://techglobal-training.com/frontend");
         driver.findElement(By.id("card-22")).click();
     }
-    /*
+
+    /* Testcase 1
     Navigate to https://techglobal-training.com/frontend/project-2
     Validate that the username input box is displayed
     Validate that the username input box is not required
@@ -57,7 +58,7 @@ public class Project_2 extends Base {
         Assert.assertEquals(forgotPassword.getText(),"Forgot Password?");
     }
 
-    /*
+    /* Testcase 2
     Navigate to https://techglobal-training.com/frontend/project-2
     Enter the username as “TechGlobal”
     Enter the password as “Test1234”
@@ -84,7 +85,7 @@ public class Project_2 extends Base {
 
     }
 
-    /*
+    /* Testcase 3
     Navigate to https://techglobal-training.com/frontend/project-2
     Enter the username as “TechGlobal”
     Enter the password as “Test1234”
@@ -109,7 +110,7 @@ public class Project_2 extends Base {
         loginForm.isDisplayed();
     }
 
-    /*
+    /* Testcase 4
     Navigate to https://techglobal-training.com/frontend/project-2
     Click on the “Forgot Password?” link
     Validate that the modal heading “Reset Password” is displayed
@@ -139,7 +140,7 @@ public class Project_2 extends Base {
         Assert.assertEquals(submitButton.getText(),"SUBMIT");
     }
 
-    /*
+    /* Testcase 5
     Navigate to https://techglobal-training.com/frontend/project-2
     Click on the “Forgot Password?” link
     Validate that the “Reset Password” modal is displayed
@@ -161,7 +162,7 @@ public class Project_2 extends Base {
         loginForm.isDisplayed();
     }
 
-    /*
+    /* Testcase 6
     Navigate to https://techglobal-training.com/frontend/project-2
     Click on the “Forgot Password?” link
     Enter an email
@@ -183,7 +184,7 @@ public class Project_2 extends Base {
         Assert.assertEquals(validateMessage.getText(),"A link to reset your password has been sent to your email address.");
     }
 
-    /*
+    /* Testcase 7
     Navigate to https://techglobal-training.com/frontend/project-2
     Leave username empty
     Leave password empty
@@ -200,7 +201,7 @@ public class Project_2 extends Base {
         Assert.assertEquals(errorMessage.getText(),"Invalid Username entered!");
     }
 
-    /*
+    /* Testcase 8
     Enter the username as “John”
     Enter the password as “Test1234”
     Click on the “LOGIN” button
@@ -220,7 +221,7 @@ public class Project_2 extends Base {
         Assert.assertEquals(errorMessage.getText(),"Invalid Username entered!");
     }
 
-    /*
+    /* Testcase 9
     Enter the username as “TechGlobal”
     Enter the password as “1234”
     Click on the “LOGIN” button
@@ -239,7 +240,7 @@ public class Project_2 extends Base {
         WebElement errorMessage = driver.findElement(By.id("error_message"));
         Assert.assertEquals(errorMessage.getText(),"Invalid Password entered!");
     }
-    /*
+    /* Testcase 10
     Enter the username as “John”
     Enter the password as “1234”
     Click on the “LOGIN” button
